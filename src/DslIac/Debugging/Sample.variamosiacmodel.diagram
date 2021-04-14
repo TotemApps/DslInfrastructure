@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iacLanguageDiagram dslVersion="1.0.0.0" Id="51f3e89a-c593-4dda-acb2-4b3ce6b6adca" absoluteBounds="0, 0, 11, 8.5" name="Sample">
+  <exampleModelMoniker Id="fefe4884-69b3-4743-a65e-cd41acb5eba9" />
+  <nestedChildShapes>
+    <exampleShape Id="8b787e8d-483f-4b9b-8417-b83ef30b5719" absoluteBounds="0.5, 1.75, 2, 0.75">
+      <exampleElementMoniker name="/fefe4884-69b3-4743-a65e-cd41acb5eba9/ExampleElement1" />
+    </exampleShape>
+    <exampleShape Id="5bb02581-258d-4c8e-99ae-5ef92697b630" absoluteBounds="3, 0.5, 2, 0.75">
+      <exampleElementMoniker name="/fefe4884-69b3-4743-a65e-cd41acb5eba9/ExampleElement2" />
+    </exampleShape>
+    <exampleConnector Id="a0f25cf9-d6f6-478b-a711-5d4e17474232" edgePoints="[(1.5 : 1.75); (1.5 : 0.875); (3 : 0.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="58a68542-27e3-4c60-a97f-c1d9153d8a04">
+      <nodes>
+        <exampleShapeMoniker Id="8b787e8d-483f-4b9b-8417-b83ef30b5719" />
+        <exampleShapeMoniker Id="5bb02581-258d-4c8e-99ae-5ef92697b630" />
+      </nodes>
+    </exampleConnector>
+  </nestedChildShapes>
+</iacLanguageDiagram>
