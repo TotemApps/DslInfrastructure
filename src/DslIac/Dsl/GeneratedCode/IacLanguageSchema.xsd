@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="IacLanguageSchema" targetNamespace="http://schemas.microsoft.com/dsltools/IacLanguage" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/dsltools/IacLanguage" xmlns:core="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import id="CoreSchema" namespace="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" />
+  <!-- IacModel -->
+  <xsd:element name="iacModel" type="IacModel" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="IacModel">
+    <xsd:annotation>
+      <xsd:documentation>The root in which all other elements are embedded. Appears as a diagram.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Relationship: IacModelHasVms -->
+          <xsd:element name="vms" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of IacModelHasVms</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="iacModelHasVms" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of IacModelHasVms needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <!-- Relationship: IacModelHasNetworkInterfaced -->
+          <xsd:element name="networkInterfaced" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of IacModelHasNetworkInterfaced</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="iacModelHasNetworkInterfaced" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of IacModelHasNetworkInterfaced needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- dslVersion -->
+        <xsd:attribute name="dslVersion" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Version of the model serialized in this file.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: name -->
+        <xsd:attribute name="name" type="xsd:string" />
+        <!-- Property: cloudProvider -->
+        <xsd:attribute name="cloudProvider" type="CloudProviderEnumerator" />
+        <!-- Property: resourceGroup -->
+        <xsd:attribute name="resourceGroup" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- IacModel Moniker -->
+  <xsd:element name="iacModelMoniker" type="IacModelMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="IacModelMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for IacModel instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Vm -->
+  <xsd:element name="vm" type="Vm" substitutionGroup="azureComponent" />
+  <xsd:complexType name="Vm">
+    <xsd:complexContent>
+      <xsd:extension base="AzureComponent">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Relationship: VmReferencesNetworkInterfaced -->
+          <xsd:element name="networkInterfaced" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of VmReferencesNetworkInterfaced</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="vmReferencesNetworkInterfaced" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of VmReferencesNetworkInterfaced needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: vmSize -->
+        <xsd:attribute name="vmSize" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Vm Moniker -->
+  <xsd:element name="vmMoniker" type="VmMoniker" substitutionGroup="azureComponentMoniker" />
+  <xsd:complexType name="VmMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Vm instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="AzureComponentMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- AzureComponent -->
+  <xsd:element name="azureComponent" abstract="true" type="AzureComponent" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="AzureComponent" abstract="true" >
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: name -->
+        <xsd:attribute name="name" type="xsd:string" />
+        <!-- Property: label -->
+        <xsd:attribute name="label" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- AzureComponent Moniker -->
+  <xsd:element name="azureComponentMoniker" abstract="true" type="AzureComponentMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="AzureComponentMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for AzureComponent instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- NetworkInterface -->
+  <xsd:element name="networkInterface" type="NetworkInterface" substitutionGroup="azureComponent" />
+  <xsd:complexType name="NetworkInterface">
+    <xsd:complexContent>
+      <xsd:extension base="AzureComponent">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- NetworkInterface Moniker -->
+  <xsd:element name="networkInterfaceMoniker" type="NetworkInterfaceMoniker" substitutionGroup="azureComponentMoniker" />
+  <xsd:complexType name="NetworkInterfaceMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for NetworkInterface instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="AzureComponentMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- IacModelHasVms -->
+  <xsd:element name="iacModelHasVms" type="IacModelHasVms" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="IacModelHasVms">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Vm -->
+          <xsd:element ref="vm" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- IacModelHasVms Moniker -->
+  <xsd:element name="iacModelHasVmsMoniker" type="IacModelHasVmsMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="IacModelHasVmsMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for IacModelHasVms instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- IacModelHasNetworkInterfaced -->
+  <xsd:element name="iacModelHasNetworkInterfaced" type="IacModelHasNetworkInterfaced" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="IacModelHasNetworkInterfaced">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end NetworkInterface -->
+          <xsd:element ref="networkInterface" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- IacModelHasNetworkInterfaced Moniker -->
+  <xsd:element name="iacModelHasNetworkInterfacedMoniker" type="IacModelHasNetworkInterfacedMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="IacModelHasNetworkInterfacedMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for IacModelHasNetworkInterfaced instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- VmReferencesNetworkInterfaced -->
+  <xsd:element name="vmReferencesNetworkInterfaced" type="VmReferencesNetworkInterfaced" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="VmReferencesNetworkInterfaced">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end NetworkInterface -->
+          <xsd:element ref="networkInterfaceMoniker" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- VmReferencesNetworkInterfaced Moniker -->
+  <xsd:element name="vmReferencesNetworkInterfacedMoniker" type="VmReferencesNetworkInterfacedMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="VmReferencesNetworkInterfacedMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for VmReferencesNetworkInterfaced instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Enum CloudProviderEnumerator -->
+  <xsd:simpleType name="CloudProviderEnumerator">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Azure"/>
+      <xsd:enumeration value="AWS"/>
+      <xsd:enumeration value="gpc"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>
+

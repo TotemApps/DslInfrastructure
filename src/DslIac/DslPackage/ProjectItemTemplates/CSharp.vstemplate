@@ -1,0 +1,17 @@
+﻿<!--DSL Tools Language Template-->
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TemplateData>
+		<TemplateID>{93c0ca13-6c1b-4c72-9366-74efa9cdd136}</TemplateID>
+		<Name Package="{129e39c0-9f0c-4a4d-8617-67ee17a6211b}" ID="103"/>
+		<Description Package="{129e39c0-9f0c-4a4d-8617-67ee17a6211b}" ID="102"/>
+		<Icon Package="{129e39c0-9f0c-4a4d-8617-67ee17a6211b}" ID="201" />
+		<ProjectType>CSharp</ProjectType>
+		<SortOrder>360</SortOrder>
+		<DefaultName>IacLanguage.variamosiacmodel</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem TargetFileName="$fileinputname$.variamosiacmodel">variamosiacmodel.variamosiacmodel</ProjectItem>
+		<ProjectItem TargetFileName="$fileinputname$.variamosiacmodel.diagram">variamosiacmodel.diagram</ProjectItem>
+	</TemplateContent>
+</VSTemplate>
+
