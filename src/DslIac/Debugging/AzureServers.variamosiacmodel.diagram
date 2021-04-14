@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iacLanguageDiagram dslVersion="1.0.0.0" Id="a1aed5a3-1549-4621-8ac1-ff40fd5929ce" absoluteBounds="0, 0, 11, 8.5" name="AzureServers">
+  <iacModelMoniker Id="37020132-d549-4cdd-8be9-c9d95d571c74" />
+  <nestedChildShapes>
+    <vmShape Id="527843a2-b8b4-4967-8135-8833b64b42af" absoluteBounds="2.75, 2.375, 1, 1">
+      <vmMoniker Id="1db09ac4-27e9-4a00-92d8-5178fb3aced8" />
+      <relativeChildShapes />
+    </vmShape>
+    <vmShape Id="831d45c0-7783-42d1-a86c-cb542dbb6094" absoluteBounds="6.25, 2.5, 1, 1">
+      <vmMoniker Id="0cf30bf4-b1ca-4d12-9fff-4a5572b92119" />
+      <relativeChildShapes />
+    </vmShape>
+    <networkInterfaceShape Id="0f2e2753-d0a3-4a51-9ae2-1861c4ceb0dd" absoluteBounds="2.75, 4.125, 1, 1">
+      <networkInterfaceMoniker Id="ed83af51-c46f-431e-ad44-a3ce9d1e992d" />
+      <relativeChildShapes />
+    </networkInterfaceShape>
+    <networkInterfaceShape Id="e9775f40-aa6f-46e7-ae06-9efbe168b0a7" absoluteBounds="6.375, 4.25, 1, 1">
+      <networkInterfaceMoniker Id="02ada089-4fc1-44a6-8c6c-e1d6f83d5fe6" />
+      <relativeChildShapes />
+    </networkInterfaceShape>
+    <vmNetworkInterfaceConnector Id="24e054ff-ebee-4e2d-8fbf-911b02f849ce" edgePoints="[(3.25 : 3.375); (3.25 : 4.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <vmReferencesNetworkInterfacedMoniker Id="0ddbf705-66d6-4532-bf1e-80d7fac6220f" />
+      <nodes>
+        <vmShapeMoniker Id="527843a2-b8b4-4967-8135-8833b64b42af" />
+        <networkInterfaceShapeMoniker Id="0f2e2753-d0a3-4a51-9ae2-1861c4ceb0dd" />
+      </nodes>
+    </vmNetworkInterfaceConnector>
+    <vmNetworkInterfaceConnector Id="72557fc8-b397-4f53-9291-15dc01d7e3d9" edgePoints="[(6.8125 : 3.5); (6.8125 : 4.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <vmReferencesNetworkInterfacedMoniker Id="4fa17b50-dda0-445f-aaca-b5e91f1cbdb5" />
+      <nodes>
+        <vmShapeMoniker Id="831d45c0-7783-42d1-a86c-cb542dbb6094" />
+        <networkInterfaceShapeMoniker Id="e9775f40-aa6f-46e7-ae06-9efbe168b0a7" />
+      </nodes>
+    </vmNetworkInterfaceConnector>
+  </nestedChildShapes>
+</iacLanguageDiagram>

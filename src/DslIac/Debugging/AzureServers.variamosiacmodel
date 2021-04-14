@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iacModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="37020132-d549-4cdd-8be9-c9d95d571c74" cloudProvider="Azure" xmlns="http://schemas.microsoft.com/dsltools/IacLanguage">
+  <vms>
+    <iacModelHasVms Id="d7d63369-923e-4dce-a207-9b0922b9bf34">
+      <vm Id="1db09ac4-27e9-4a00-92d8-5178fb3aced8" name="Vm1" label="API Server">
+        <networkInterfaced>
+          <vmReferencesNetworkInterfaced Id="0ddbf705-66d6-4532-bf1e-80d7fac6220f">
+            <networkInterfaceMoniker Id="ed83af51-c46f-431e-ad44-a3ce9d1e992d" />
+          </vmReferencesNetworkInterfaced>
+        </networkInterfaced>
+      </vm>
+    </iacModelHasVms>
+    <iacModelHasVms Id="fe640703-c97f-4ca4-8b7d-74f55f37b117">
+      <vm Id="0cf30bf4-b1ca-4d12-9fff-4a5572b92119" name="Vm2" label="Hone Page Server">
+        <networkInterfaced>
+          <vmReferencesNetworkInterfaced Id="4fa17b50-dda0-445f-aaca-b5e91f1cbdb5">
+            <networkInterfaceMoniker Id="02ada089-4fc1-44a6-8c6c-e1d6f83d5fe6" />
+          </vmReferencesNetworkInterfaced>
+        </networkInterfaced>
+      </vm>
+    </iacModelHasVms>
+  </vms>
+  <networkInterfaced>
+    <iacModelHasNetworkInterfaced Id="4e078c99-b7eb-4c7a-87e4-9536a36ad564">
+      <networkInterface Id="ed83af51-c46f-431e-ad44-a3ce9d1e992d" name="NetworkInterface1" label="Network interface API" />
+    </iacModelHasNetworkInterfaced>
+    <iacModelHasNetworkInterfaced Id="a9aabbdf-1aca-47a8-abeb-4b68a139a8a8">
+      <networkInterface Id="02ada089-4fc1-44a6-8c6c-e1d6f83d5fe6" name="NetworkInterface2" label="Network interface API Server" />
+    </iacModelHasNetworkInterfaced>
+  </networkInterfaced>
+</iacModel>
